@@ -1,0 +1,36 @@
+name: update
+
+permissions:
+  contents: write
+
+on:
+  push:
+  schedule:
+    - cron:  '0 0 * * *'
+  pull_request:
+  workflow_dispatch:
+
+env:
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    name: build
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: build
+        id: build
+        run: |
+          mkdir -p ./assets
+          cd assets
+          bash download.sh
+
+      - name: release
+        uses: ncipollo/release-action@v1
+        with:
+          tag: nightly
+          artifacts: "./assets/*"
+          allowUpdates: true
