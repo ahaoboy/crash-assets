@@ -33,5 +33,17 @@ yacd_tag="v0.3.8"
 yacd_url="https://github.com/haishanh/yacd/releases/download/$yacd_tag/yacd.tar.xz"
 curl -L -o yacd.tar.xz "$yacd_url"
 
+for gzfile in *.gz; do
+  [ -e "$gzfile" ] || continue
+
+  base="${gzfile%.gz}"
+
+  gunzip -c "$gzfile" > "$base"
+
+  tar -czf "${base}.tgz" "$base"
+
+  rm -f "$base"
+done
+
 
 echo "All downloads completed."
