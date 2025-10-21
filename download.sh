@@ -1,8 +1,9 @@
 #!/bin/bash
 
 mihomo_files=(
-    "mihomo-1.19.15-windows-64.zip"
-    "mihomo-1.19.15-windows-32.zip"
+    "mihomo-windows-amd64-v1.19.15.zip"
+    "mihomo-linux-amd64-v1.19.15.gz"
+    "mihomo-linux-arm64-v1.19.15.gz"
 )
 mihomo_tag="v1.19.15"
 mihomo_url="https://github.com/MetaCubeX/mihomo/releases/download/$mihomo_tag"
