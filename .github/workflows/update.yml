@@ -26,7 +26,7 @@ jobs:
         run: |
           mkdir -p ./assets
           cd assets
-          bash download.sh
+          bash ../download.sh
 
       - name: release
         uses: ncipollo/release-action@v1
