@@ -27,4 +27,10 @@ metacubexd_tag="v1.194.0"
 metacubexd_url="https://github.com/MetaCubeX/metacubexd/releases/download/$metacubexd_tag/compressed-dist.tgz"
 curl -L -o metacubexd.tgz "$metacubexd_url"
 
+
+yacd_tag="v0.3.8"
+yacd_url="https://github.com/haishanh/yacd/releases/download/$yacd_tag/yacd.tar.xz"
+curl -L -o yacd.tar.xz "$yacd_url"
+
+
 echo "All downloads completed."
