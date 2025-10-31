@@ -5,6 +5,7 @@ mihomo_files=(
     "mihomo-linux-amd64-v1.19.15.gz"
     "mihomo-linux-arm64-v1.19.15.gz"
     "mihomo-darwin-arm64-v1.19.15.gz"
+    "mihomo-darwin-amd64-v1.19.15.gz"
 )
 mihomo_tag="v1.19.15"
 mihomo_url="https://github.com/MetaCubeX/mihomo/releases/download/$mihomo_tag"
