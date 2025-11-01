@@ -18,7 +18,8 @@ process_compressed() {
     local file="$1"
     local ext="${file##*.}"
     local base="${file%.*}"
-    local temp_dir=$(mktemp -d)
+    local temp_dir="./tmp"
+    mkdir -p $temp_dir
 
     case "$ext" in
         zip)
