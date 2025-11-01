@@ -40,12 +40,9 @@ jobs:
           artifacts: "*.zip,*.tgz,*.tar.xz"
           allowUpdates: true
 
-      - name: Push updates to main
-        uses: peaceiris/actions-gh-pages@v4
-        if: github.ref == 'refs/heads/main'
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./
-          publish_branch: main
-          force_orphan: true
-          commit_message: "chore: update downloaded assets [skip ci]"
+      - name: Force push to main
+        run: |
+          git add .
+          git commit -m "update assets [skip ci]"
+          git branch -M main
+          git push -f origin main
