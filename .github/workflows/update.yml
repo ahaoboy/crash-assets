@@ -31,8 +31,7 @@ jobs:
         id: build
         run: |
           mkdir -p .
-          cd assets
-          bash ../download.sh
+          bash ./download.sh
 
       - name: release
         uses: ncipollo/release-action@v1
