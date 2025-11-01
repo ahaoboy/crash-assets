@@ -54,7 +54,7 @@ geo_files=(
     "geosite.dat"
 )
 geo_tag="latest"
-geo_url="https://github.com/meta-rules-dat/meta-rules-dat/releases/download/$mihomo_tag"
+geo_url="https://github.com/meta-rules-dat/meta-rules-dat/releases/download/$geo_tag"
 
 for file in "${geo_files[@]}"; do
     echo "Downloading $file..."
