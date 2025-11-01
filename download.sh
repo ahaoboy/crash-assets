@@ -70,6 +70,19 @@ for file in "${mihomo_files[@]}"; do
     download "$mihomo_url/$file" "$file"
 done
 
+clash_files=(
+    "clash-linux-386.tar.gz"
+    "clash-linux-amd64.tar.gz"
+    "clash-linux-arm64.tar.gz"
+    "clash-linux-armv5.tar.gz"
+    "clash-linux-armv7.tar.gz"
+)
+
+for file in "${clash_files[@]}"; do
+    clash_url="https://github.com/juewuy/ShellCrash/raw/refs/heads/dev/bin/clash/$file"
+    download "$clash_url" "$file"
+done
+
 # Zashboard
 zashboard_tag="v1.107.0"
 zashboard_url="https://github.com/Zephyruso/zashboard/releases/download/$zashboard_tag/dist.zip"
