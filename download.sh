@@ -48,4 +48,23 @@ for gzfile in *.gz; do
 done
 
 
+geo_files=(
+    "geoip.metadb"
+    "geoip.dat"
+    "geosite.dat"
+)
+geo_tag="latest"
+geo_url="https://github.com/meta-rules-dat/meta-rules-dat/releases/download/$mihomo_tag"
+
+for file in "${geo_files[@]}"; do
+    echo "Downloading $file..."
+    curl -L -O "$geo_url/$file"
+    if [ $? -eq 0 ]; then
+        echo "Downloaded $file successfully."
+    else
+        echo "Failed to download $file."
+    fi
+done
+
+
 echo "All downloads completed."

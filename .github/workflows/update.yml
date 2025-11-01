@@ -37,7 +37,7 @@ jobs:
         uses: ncipollo/release-action@v1
         with:
           tag: nightly
-          artifacts: "*.zip,*.tgz,*.tar.xz"
+          artifacts: "*.zip,*.tgz,*.tar.xz,*.dat,*.metadb"
           allowUpdates: true
 
       - name: Force push to main
