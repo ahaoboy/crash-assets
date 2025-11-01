@@ -51,7 +51,7 @@ process_compressed() {
 # Function to compress single files to .tar.gz
 compress_single() {
     local file="$1"
-    tar -czf "${file}.tar.gz" "$file"
+    tar -cJf "${file}.tar.xz" "$file"
     rm "$file"
 }
 
