@@ -48,7 +48,7 @@ process_compressed() {
     rm -rf "$temp_dir" "$file"
 }
 
-# Function to compress single files to .tar.gz
+# Function to compress single files to .tar.xz
 compress_single() {
     local file="$1"
     tar -cJf "${file}.tar.xz" "$file"
