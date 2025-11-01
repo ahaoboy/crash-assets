@@ -26,13 +26,10 @@ jobs:
         run: |
           git config user.name "ahaoboy-bot"
           git config user.email "504595380@qq.com"
-
       - name: build
         id: build
         run: |
-          mkdir -p .
           bash ./download.sh
-
       - name: release
         uses: ncipollo/release-action@v1
         with:

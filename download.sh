@@ -1,5 +1,60 @@
 #!/bin/bash
 
+# Function to download a file with error checking
+download() {
+    local url="$1"
+    local output="$2"
+    echo "Downloading $output from $url..."
+    curl -L -o "$output" "$url"
+    if [ $? -eq 0 ]; then
+        echo "Downloaded $output successfully."
+    else
+        echo "Failed to download $output."
+    fi
+}
+
+# Function to process compressed files: decompress and recompress to .tar.xz
+process_compressed() {
+    local file="$1"
+    local ext="${file##*.}"
+    local base="${file%.*}"
+    local temp_dir=$(mktemp -d)
+
+    case "$ext" in
+        zip)
+            unzip "$file" -d "$temp_dir"
+            ;;
+        gz)
+            if [[ "$file" == *.tar.gz ]]; then
+                tar -xzf "$file" -C "$temp_dir"
+                base="${file%.*.*}"  # Remove .tar.gz
+            else
+                gunzip -c "$file" > "$temp_dir/$base"
+            fi
+            ;;
+        tgz)
+            tar -xzf "$file" -C "$temp_dir"
+            base="${file%.*}"  # Remove .tgz
+            ;;
+        *)
+            rm -rf "$temp_dir"
+            return
+            ;;
+    esac
+
+    # Recompress to .tar.xz
+    (cd "$temp_dir" && tar -cJf "../${base}.tar.xz" .)
+    rm -rf "$temp_dir" "$file"
+}
+
+# Function to compress single files to .tar.gz
+compress_single() {
+    local file="$1"
+    tar -czf "${file}.tar.gz" "$file"
+    rm "$file"
+}
+
+# Mihomo files
 mihomo_files=(
     "mihomo-windows-amd64-v1.19.15.zip"
     "mihomo-linux-amd64-v1.19.15.gz"
@@ -11,43 +66,25 @@ mihomo_tag="v1.19.15"
 mihomo_url="https://github.com/MetaCubeX/mihomo/releases/download/$mihomo_tag"
 
 for file in "${mihomo_files[@]}"; do
-    echo "Downloading $file..."
-    curl -L -O "$mihomo_url/$file"
-    if [ $? -eq 0 ]; then
-        echo "Downloaded $file successfully."
-    else
-        echo "Failed to download $file."
-    fi
+    download "$mihomo_url/$file" "$file"
 done
 
-
+# Zashboard
 zashboard_tag="v1.107.0"
 zashboard_url="https://github.com/Zephyruso/zashboard/releases/download/$zashboard_tag/dist.zip"
-curl -L -o zashboard.zip "$zashboard_url"
+download "$zashboard_url" "zashboard.zip"
 
-
+# Metacubexd
 metacubexd_tag="v1.194.0"
 metacubexd_url="https://github.com/MetaCubeX/metacubexd/releases/download/$metacubexd_tag/compressed-dist.tgz"
-curl -L -o metacubexd.tgz "$metacubexd_url"
+download "$metacubexd_url" "metacubexd.tgz"
 
-
+# Yacd (already .tar.xz, no post-processing needed)
 yacd_tag="v0.3.8"
 yacd_url="https://github.com/haishanh/yacd/releases/download/$yacd_tag/yacd.tar.xz"
-curl -L -o yacd.tar.xz "$yacd_url"
+download "$yacd_url" "yacd.tar.xz"
 
-for gzfile in *.gz; do
-  [ -e "$gzfile" ] || continue
-
-  base="${gzfile%.gz}"
-
-  gunzip -c "$gzfile" > "$base"
-
-  tar -czf "${base}.tgz" "$base"
-
-  rm -f "$base"
-done
-
-
+# Geo files
 geo_files=(
     "geoip.metadb"
     "geoip.dat"
@@ -57,14 +94,19 @@ geo_tag="latest"
 geo_url="https://github.com/MetaCubeX/meta-rules-dat/releases/download/$geo_tag"
 
 for file in "${geo_files[@]}"; do
-    echo "Downloading $file..."
-    curl -L -O "$geo_url/$file"
-    if [ $? -eq 0 ]; then
-        echo "Downloaded $file successfully."
-    else
-        echo "Failed to download $file."
-    fi
+    download "$geo_url/$file" "$file"
 done
 
+# Post-process compressed files
+for file in *.zip *.gz *.tgz *.tar.gz; do
+    [ -e "$file" ] || continue
+    process_compressed "$file"
+done
 
-echo "All downloads completed."
+# Compress single files
+for file in *.dat *.metadb; do
+    [ -e "$file" ] || continue
+    compress_single "$file"
+done
+
+echo "All downloads and processing completed."
