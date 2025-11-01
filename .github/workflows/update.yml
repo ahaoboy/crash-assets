@@ -5,8 +5,8 @@ permissions:
 
 on:
   push:
-  schedule:
-    - cron:  '0 0 * * *'
+  # schedule:
+  #   - cron:  '0 0 * * *'
   pull_request:
   workflow_dispatch:
 
@@ -20,11 +20,17 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 1
+      - name: Setup Git
+        run: |
+          git config user.name "ahaoboy-bot"
+          git config user.email "504595380@qq.com"
 
       - name: build
         id: build
         run: |
-          mkdir -p ./assets
+          mkdir -p .
           cd assets
           bash ../download.sh
 
@@ -32,5 +38,15 @@ jobs:
         uses: ncipollo/release-action@v1
         with:
           tag: nightly
-          artifacts: "./assets/*"
+          artifacts: "*.zip,*.tgz,*.tar.xz"
           allowUpdates: true
+
+      - name: Push updates to main
+        uses: peaceiris/actions-gh-pages@v4
+        if: github.ref == 'refs/heads/main'
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./
+          publish_branch: main
+          force_orphan: true
+          commit_message: "chore: update downloaded assets [skip ci]"
