@@ -60,6 +60,7 @@ mihomo_files=(
     "mihomo-windows-amd64-v1.19.15.zip"
     "mihomo-linux-amd64-v1.19.15.gz"
     "mihomo-linux-arm64-v1.19.15.gz"
+    "mihomo-linux-armv5-v1.19.15.gz"
     "mihomo-darwin-arm64-v1.19.15.gz"
     "mihomo-darwin-amd64-v1.19.15.gz"
 )
