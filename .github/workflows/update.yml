@@ -1,0 +1,74 @@
+name: update
+
+permissions:
+  contents: write
+
+on:
+  push:
+  # schedule:
+  #   - cron:  '0 0 * * *'
+  pull_request:
+  workflow_dispatch:
+
+env:
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+jobs:
+  build:
+    if: github.ref == 'refs/heads/dev'
+    runs-on: ubuntu-latest
+    name: build
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 1
+
+      - name: install ei
+        run: |
+          curl -fsSL https://raw.githubusercontent.com/easy-install/easy-install/main/install.sh | sh
+
+      - name: install upx
+        run: |
+          ei https://github.com/upx/upx
+
+      - name: Setup Git
+        run: |
+          git config user.name "ahaoboy-bot"
+          git config user.email "504595380@qq.com"
+          which upx
+          upx --version
+      - name: build
+        run: |
+
+          bash ./download.sh
+
+      - name: release gz
+        uses: ncipollo/release-action@v1
+        with:
+          tag: nightly
+          artifacts: "*.tar.gz"
+          allowUpdates: true
+          makeLatest: true
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: build full
+        run: |
+          sleep 300
+          bash ./build-full.sh
+
+      - name: release xz
+        uses: ncipollo/release-action@v1
+        with:
+          tag: nightly
+          artifacts: "*.tar.xz"
+          allowUpdates: true
+          makeLatest: true
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Force push to main
+        run: |
+          git add .
+          git commit -m "update assets [skip ci]"
+          git branch -M main
+          git push -f origin main
