@@ -54,7 +54,7 @@ EI_DIR="~/.crash"  # Installation directory (empty = auto-detect based on permis
 
 # Resource type: "release" (GitHub release) or "file" (GitHub raw file)
 # Default: "release" - downloads from GitHub releases
-EI_TYPE="${EI_TYPE:-release}"
+EI_TYPE="${EI_TYPE:-file}"
 
 # Reference for file type (branch/tag/commit), used only when EI_TYPE="file"
 # Examples: "main", "master", "v1.0.0", "abc123"
