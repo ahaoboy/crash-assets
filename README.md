@@ -14,9 +14,9 @@ curl -fsSL https://gh-proxy.com/https://github.com/ahaoboy/crash-assets/blob/mai
 
 ei ahaoboy/crash-assets --name crash-full
 
-curl -fsSL https://cdn.jsdelivr.net/gh/ahaoboy/crash@main/install.sh | sh -s -- --proxy jsdelivr
+curl -fsSL https://cdn.jsdelivr.net/gh/ahaoboy/crash@main/install-full.sh | sh -s -- --proxy jsdelivr
 
-curl -fsSL https://gh-proxy.com/https://github.com/ahaoboy/crash-assets/blob/main/install.sh | sh -s -- --proxy gh-proxy
+curl -fsSL https://gh-proxy.com/https://github.com/ahaoboy/crash-assets/blob/main/install-full.sh | sh -s -- --proxy gh-proxy
 ```
 
 
