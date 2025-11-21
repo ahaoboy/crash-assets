@@ -95,26 +95,26 @@ esac
 get_platform_filename() {
   local target="$1"
   case "$target" in
-    x86_64-unknown-linux-musl)      echo "${EI_BINARY_NAME}-x86_64-unknown-linux-musl.tar.gz" ;;
-    x86_64-unknown-linux-gnu)       echo "${EI_BINARY_NAME}-x86_64-unknown-linux-gnu.tar.gz" ;;
-    aarch64-unknown-linux-musl)     echo "${EI_BINARY_NAME}-aarch64-unknown-linux-musl.tar.gz" ;;
-    aarch64-unknown-linux-gnu)      echo "${EI_BINARY_NAME}-aarch64-unknown-linux-gnu.tar.gz" ;;
-    armv7-unknown-linux-musleabihf) echo "${EI_BINARY_NAME}-armv7-unknown-linux-musleabihf.tar.gz" ;;
-    armv7-unknown-linux-gnueabihf)  echo "${EI_BINARY_NAME}-armv7-unknown-linux-gnueabihf.tar.gz" ;;
-    arm-unknown-linux-musleabihf)   echo "${EI_BINARY_NAME}-arm-unknown-linux-musleabihf.tar.gz" ;;
-    arm-unknown-linux-gnueabihf)    echo "${EI_BINARY_NAME}-arm-unknown-linux-gnueabihf.tar.gz" ;;
-    i686-unknown-linux-musl)        echo "${EI_BINARY_NAME}-i686-unknown-linux-musl.tar.gz" ;;
-    i686-unknown-linux-gnu)         echo "${EI_BINARY_NAME}-i686-unknown-linux-gnu.tar.gz" ;;
-    x86_64-apple-darwin)            echo "${EI_BINARY_NAME}-x86_64-apple-darwin.tar.gz" ;;
-    aarch64-apple-darwin)           echo "${EI_BINARY_NAME}-aarch64-apple-darwin.tar.gz" ;;
+    x86_64-unknown-linux-musl)      echo "${EI_BINARY_NAME}-x86_64-unknown-linux-musl.tar.xz" ;;
+    x86_64-unknown-linux-gnu)       echo "${EI_BINARY_NAME}-x86_64-unknown-linux-gnu.tar.xz" ;;
+    aarch64-unknown-linux-musl)     echo "${EI_BINARY_NAME}-aarch64-unknown-linux-musl.tar.xz" ;;
+    aarch64-unknown-linux-gnu)      echo "${EI_BINARY_NAME}-aarch64-unknown-linux-gnu.tar.xz" ;;
+    armv7-unknown-linux-musleabihf) echo "${EI_BINARY_NAME}-armv7-unknown-linux-musleabihf.tar.xz" ;;
+    armv7-unknown-linux-gnueabihf)  echo "${EI_BINARY_NAME}-armv7-unknown-linux-gnueabihf.tar.xz" ;;
+    arm-unknown-linux-musleabihf)   echo "${EI_BINARY_NAME}-arm-unknown-linux-musleabihf.tar.xz" ;;
+    arm-unknown-linux-gnueabihf)    echo "${EI_BINARY_NAME}-arm-unknown-linux-gnueabihf.tar.xz" ;;
+    i686-unknown-linux-musl)        echo "${EI_BINARY_NAME}-i686-unknown-linux-musl.tar.xz" ;;
+    i686-unknown-linux-gnu)         echo "${EI_BINARY_NAME}-i686-unknown-linux-gnu.tar.xz" ;;
+    x86_64-apple-darwin)            echo "${EI_BINARY_NAME}-x86_64-apple-darwin.tar.xz" ;;
+    aarch64-apple-darwin)           echo "${EI_BINARY_NAME}-aarch64-apple-darwin.tar.xz" ;;
     x86_64-pc-windows-msvc)         echo "${EI_BINARY_NAME}-x86_64-pc-windows-msvc.zip" ;;
     x86_64-pc-windows-gnu)          echo "${EI_BINARY_NAME}-x86_64-pc-windows-gnu.zip" ;;
     i686-pc-windows-msvc)           echo "${EI_BINARY_NAME}-i686-pc-windows-msvc.zip" ;;
     aarch64-pc-windows-msvc)        echo "${EI_BINARY_NAME}-aarch64-pc-windows-msvc.zip" ;;
-    aarch64-linux-android)          echo "${EI_BINARY_NAME}-aarch64-linux-android.tar.gz" ;;
-    armv7-linux-androideabi)        echo "${EI_BINARY_NAME}-armv7-linux-androideabi.tar.gz" ;;
-    i686-linux-android)             echo "${EI_BINARY_NAME}-i686-linux-android.tar.gz" ;;
-    x86_64-linux-android)           echo "${EI_BINARY_NAME}-x86_64-linux-android.tar.gz" ;;
+    aarch64-linux-android)          echo "${EI_BINARY_NAME}-aarch64-linux-android.tar.xz" ;;
+    armv7-linux-androideabi)        echo "${EI_BINARY_NAME}-armv7-linux-androideabi.tar.xz" ;;
+    i686-linux-android)             echo "${EI_BINARY_NAME}-i686-linux-android.tar.xz" ;;
+    x86_64-linux-android)           echo "${EI_BINARY_NAME}-x86_64-linux-android.tar.xz" ;;
     *)                              echo "" ;;
   esac
 }
@@ -452,7 +452,7 @@ resolve_windows_path() {
 detect_compression_format() {
   local filename="$1"
   case "$filename" in
-    *.tar.gz) echo "tar.gz" ;;
+    *.tar.xz) echo "tar.gz" ;;
     *.tgz)    echo "tgz" ;;
     *.tar.xz) echo "tar.xz" ;;
     *.zip)    echo "zip" ;;
