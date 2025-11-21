@@ -61,7 +61,7 @@ EI_TYPE="${EI_TYPE:-file}"
 EI_REF="${EI_REF:-main}"
 
 # EI_MIN_DISK_SPACE to specify minimum required disk space in MB (default: 0)
-EI_MIN_DISK_SPACE=25
+EI_MIN_DISK_SPACE=40
 
 # ============================================================================
 # DEFAULTS - These can be overridden by command-line arguments
