@@ -1,13 +1,31 @@
 #!/bin/bash
 
-# Function to download a file with error checking
+# Function to remove version numbers from filename
+# Handles patterns like: -v1.19.17, -1.12.12, _v2.3.0, etc.
+remove_version() {
+    local filename="$1"
+    # Remove version patterns: -v1.2.3, -1.2.3, _v1.2.3, _1.2.3 (with optional pre-release tags)
+    echo "$filename" | sed -E 's/[-_]v?[0-9]+\.[0-9]+(\.[0-9]+)?([-_][a-zA-Z0-9]+)?//g'
+}
+
+# Function to download a file with error checking and version removal
 download() {
     local url="$1"
     local output="$2"
+    local final_output
+
     echo "Downloading $output from $url..."
     curl -q -sS -L -o "$output" "$url"
     if [ $? -eq 0 ]; then
         echo "Downloaded $output successfully."
+
+        # Remove version from filename
+        final_output=$(remove_version "$output")
+
+        if [ "$final_output" != "$output" ] && [ -n "$final_output" ]; then
+            mv "$output" "$final_output"
+            echo "Renamed: $output -> $final_output"
+        fi
     else
         echo "Failed to download $output."
     fi
@@ -66,15 +84,15 @@ compress_single() {
 }
 
 # Mihomo files
+mihomo_tag="v1.19.17"
 mihomo_files=(
-    "mihomo-windows-amd64-v1.19.16.zip"
-    "mihomo-linux-amd64-v1.19.16.gz"
-    "mihomo-linux-arm64-v1.19.16.gz"
-    "mihomo-linux-armv5-v1.19.16.gz"
-    "mihomo-darwin-arm64-v1.19.16.gz"
-    "mihomo-darwin-amd64-v1.19.16.gz"
+    "mihomo-windows-amd64-$mihomo_tag.zip"
+    "mihomo-linux-amd64-$mihomo_tag.gz"
+    "mihomo-linux-arm64-$mihomo_tag.gz"
+    "mihomo-linux-armv5-$mihomo_tag.gz"
+    "mihomo-darwin-arm64-$mihomo_tag.gz"
+    "mihomo-darwin-amd64-$mihomo_tag.gz"
 )
-mihomo_tag="v1.19.16"
 mihomo_url="https://github.com/MetaCubeX/mihomo/releases/download/$mihomo_tag"
 
 for file in "${mihomo_files[@]}"; do
@@ -129,12 +147,12 @@ for file in "${clash_files[@]}"; do
 done
 
 # Zashboard
-zashboard_tag="v1.107.0"
+zashboard_tag="v2.3.0"
 zashboard_url="https://github.com/Zephyruso/zashboard/releases/download/$zashboard_tag/dist.zip"
 download "$zashboard_url" "zashboard.zip"
 
 # Metacubexd
-metacubexd_tag="v1.194.0"
+metacubexd_tag="v1.218.0"
 metacubexd_url="https://github.com/MetaCubeX/metacubexd/releases/download/$metacubexd_tag/compressed-dist.tgz"
 download "$metacubexd_url" "metacubexd.tgz"
 
@@ -158,7 +176,7 @@ for file in "${geo_files[@]}"; do
 done
 
 # Post-process compressed files
-for file in *.zip mihomo*.gz *.tgz *.xz; do
+for file in *.zip mihomo*.gz sing-box*.gz *.tgz *.xz; do
     [ -e "$file" ] || continue
     process_compressed "$file"
 done

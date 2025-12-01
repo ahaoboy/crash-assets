@@ -42,10 +42,12 @@ jobs:
         run: |
 
           bash ./download.sh
+          # gh release delete nightly -y
 
       - name: release gz
         uses: ncipollo/release-action@v1
         with:
+          # tag: ${{ startsWith(github.ref, 'refs/tags/') && github.ref_name || 'nightly' }}
           tag: nightly
           artifacts: "*.tar.gz"
           allowUpdates: true
