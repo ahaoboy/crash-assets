@@ -10,6 +10,9 @@ curl -fsSL https://gh-proxy.com/https://github.com/ahaoboy/crash-assets/blob/mai
 ```
 
 ### crash-full
+
+**tar needs to support the xz format.**
+
 ```bash
 
 ei ahaoboy/crash-assets --name crash-full
