@@ -107,10 +107,10 @@ get_platform_filename() {
     i686-unknown-linux-gnu)         echo "${EI_BINARY_NAME}-i686-unknown-linux-gnu.tar.xz" ;;
     x86_64-apple-darwin)            echo "${EI_BINARY_NAME}-x86_64-apple-darwin.tar.xz" ;;
     aarch64-apple-darwin)           echo "${EI_BINARY_NAME}-aarch64-apple-darwin.tar.xz" ;;
-    x86_64-pc-windows-msvc)         echo "${EI_BINARY_NAME}-x86_64-pc-windows-msvc.zip" ;;
-    x86_64-pc-windows-gnu)          echo "${EI_BINARY_NAME}-x86_64-pc-windows-gnu.zip" ;;
-    i686-pc-windows-msvc)           echo "${EI_BINARY_NAME}-i686-pc-windows-msvc.zip" ;;
-    aarch64-pc-windows-msvc)        echo "${EI_BINARY_NAME}-aarch64-pc-windows-msvc.zip" ;;
+    x86_64-pc-windows-msvc)         echo "${EI_BINARY_NAME}-x86_64-pc-windows-msvc.tar.xz" ;;
+    x86_64-pc-windows-gnu)          echo "${EI_BINARY_NAME}-x86_64-pc-windows-gnu.tar.xz" ;;
+    i686-pc-windows-msvc)           echo "${EI_BINARY_NAME}-i686-pc-windows-msvc.tar.xz" ;;
+    aarch64-pc-windows-msvc)        echo "${EI_BINARY_NAME}-aarch64-pc-windows-msvc.tar.xz" ;;
     aarch64-linux-android)          echo "${EI_BINARY_NAME}-aarch64-linux-android.tar.xz" ;;
     armv7-linux-androideabi)        echo "${EI_BINARY_NAME}-armv7-linux-androideabi.tar.xz" ;;
     i686-linux-android)             echo "${EI_BINARY_NAME}-i686-linux-android.tar.xz" ;;
