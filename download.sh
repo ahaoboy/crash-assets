@@ -100,7 +100,7 @@ for file in "${mihomo_files[@]}"; do
 done
 
 # singbox files
-singbox_version="1.12.13"
+singbox_version="1.12.14"
 singbox_tag="v$singbox_version"
 singbox_files=(
   "sing-box-$singbox_version-linux-arm64.tar.gz"
@@ -148,12 +148,12 @@ for file in "${clash_files[@]}"; do
 done
 
 # Zashboard
-zashboard_tag="v2.4.1"
+zashboard_tag="v2.5.0"
 zashboard_url="https://github.com/Zephyruso/zashboard/releases/download/$zashboard_tag/dist.zip"
 download "$zashboard_url" "zashboard.zip"
 
 # Metacubexd
-metacubexd_tag="v1.234.1"
+metacubexd_tag="v1.235.0"
 metacubexd_url="https://github.com/MetaCubeX/metacubexd/releases/download/$metacubexd_tag/compressed-dist.tgz"
 download "$metacubexd_url" "metacubexd.tgz"
 

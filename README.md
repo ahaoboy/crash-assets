@@ -1,5 +1,11 @@
 https://github.com/ahaoboy/crash
 
+https://github.com/MetaCubeX/mihomo
+
+https://github.com/SagerNet/sing-box
+
+https://github.com/MetaCubeX/metacubexd
+
 ### crash
 
 ```bash
