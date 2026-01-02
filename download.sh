@@ -148,9 +148,9 @@ for file in "${clash_files[@]}"; do
 done
 
 # Zashboard
-zashboard_tag="v2.5.0"
-zashboard_url="https://github.com/Zephyruso/zashboard/releases/download/$zashboard_tag/dist.zip"
-download "$zashboard_url" "zashboard.zip"
+# zashboard_tag="v2.5.0"
+# zashboard_url="https://github.com/Zephyruso/zashboard/releases/download/$zashboard_tag/dist.zip"
+# download "$zashboard_url" "zashboard.zip"
 
 # Metacubexd
 metacubexd_tag="v1.235.0"
