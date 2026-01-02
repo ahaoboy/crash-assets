@@ -26,6 +26,8 @@ ei ahaoboy/crash-assets --name crash-full
 curl -fsSL https://cdn.jsdelivr.net/gh/ahaoboy/crash-assets@main/install-full.sh | sh -s -- --proxy jsdelivr
 
 curl -fsSL https://gh-proxy.com/https://github.com/ahaoboy/crash-assets/blob/main/install-full.sh | sh -s -- --proxy gh-proxy
+
+ei https://github.com/ahaoboy/crash-assets/blob/main/crash-full-x86_64-pc-windows-msvc.tar.xz
 ```
 
 
