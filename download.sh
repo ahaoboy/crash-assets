@@ -84,7 +84,7 @@ compress_single() {
 }
 
 # Mihomo files
-mihomo_tag="v1.19.23"
+mihomo_tag="v1.19.25"
 mihomo_files=(
     "mihomo-windows-amd64-$mihomo_tag.zip"
     "mihomo-linux-amd64-$mihomo_tag.gz"
@@ -100,7 +100,7 @@ for file in "${mihomo_files[@]}"; do
 done
 
 # singbox files
-singbox_version="1.13.6"
+singbox_version="1.13.12"
 singbox_tag="v$singbox_version"
 singbox_files=(
   "sing-box-$singbox_version-linux-arm64.tar.gz"
@@ -153,7 +153,7 @@ done
 # download "$zashboard_url" "zashboard.zip"
 
 # Metacubexd
-metacubexd_tag="v1.244.2"
+metacubexd_tag="v1.248.1"
 metacubexd_url="https://github.com/MetaCubeX/metacubexd/releases/download/$metacubexd_tag/compressed-dist.tgz"
 download "$metacubexd_url" "metacubexd.tgz"
 
