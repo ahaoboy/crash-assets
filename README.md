@@ -21,9 +21,10 @@ curl -fsSL https://gh-proxy.com/https://github.com/ahaoboy/crash-assets/blob/mai
 
 ```bash
 
-ei ahaoboy/crash-assets --name crash-full
+ ei ahaoboy/crash-assets --name crash-full --dir ~/.crash
 
-curl -fsSL https://cdn.jsdelivr.net/gh/ahaoboy/crash-assets@main/install-full.sh | sh -s -- --proxy jsdelivr
+# Needs to support extracting tar.xz files.
+curl -fsSL https://cdn.jsdelivr.net/gh/ahaoboy/crash-assets@main/install-full.sh | sh -s -- --proxy jsdelivr --dir ~/.crash
 
 curl -fsSL https://gh-proxy.com/https://github.com/ahaoboy/crash-assets/blob/main/install-full.sh | sh -s -- --proxy gh-proxy
 
