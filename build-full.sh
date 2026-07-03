@@ -39,7 +39,7 @@ build() {
     for name in "${ui[@]}"; do
         url="$RELEASE/$name"
         local base="${name%.tar.gz}"
-        ei $url --dir "./$CONFIG_DIR" --alias Metacubexd
+        ei $url --dir "./$CONFIG_DIR" --alias CrashUI
     done
 
     cd "$target"
