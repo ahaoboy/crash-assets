@@ -28,8 +28,8 @@ build() {
     CONFIG_DIR="$target/crash_config"
     mkdir -p "./$CONFIG_DIR"
 
-    ei $REPO --name crash --target $target --dir "./$target"
-    ei $REPO --name mihomo --target $target --alias Mihomo --dir "./$CONFIG_DIR"
+    ei $REPO --name crash --target $target --dir "./$target" --fuzzy
+    ei $REPO --name mihomo --target $target --alias Mihomo --dir "./$CONFIG_DIR" --fuzzy
 
     for name in "${geo[@]}"; do
         url="$RELEASE/$name"
