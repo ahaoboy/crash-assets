@@ -15,7 +15,7 @@ geo=(
 )
 
 ui=(
-  "metacubexd.tar.gz"
+  "crash-ui.tar.gz"
 )
 
 

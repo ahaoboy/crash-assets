@@ -1,5 +1,7 @@
 https://github.com/ahaoboy/crash
 
+https://github.com/ahaoboy/crash-ui
+
 https://github.com/MetaCubeX/mihomo
 
 https://github.com/SagerNet/sing-box

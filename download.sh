@@ -152,6 +152,10 @@ done
 # zashboard_url="https://github.com/Zephyruso/zashboard/releases/download/$zashboard_tag/dist.zip"
 # download "$zashboard_url" "zashboard.zip"
 
+# crash
+crash_ui_url="https://github.com/ahaoboy/crash-ui/releases/latest/download/crash-ui.zip"
+download "$crash_ui_url" "crash-ui.zip"
+
 # Metacubexd
 metacubexd_tag="v1.265.0"
 metacubexd_url="https://github.com/MetaCubeX/metacubexd/releases/download/$metacubexd_tag/compressed-dist.tgz"
