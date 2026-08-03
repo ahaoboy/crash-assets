@@ -83,8 +83,8 @@ compress_single() {
     rm "$file"
 }
 
-# Mihomo files
-mihomo_tag="v1.19.27"
+# Mihomo files https://github.com/MetaCubeX/mihomo
+mihomo_tag="v1.19.29"
 mihomo_files=(
     "mihomo-windows-amd64-$mihomo_tag.zip"
     "mihomo-linux-amd64-$mihomo_tag.gz"
@@ -99,8 +99,8 @@ for file in "${mihomo_files[@]}"; do
     download "$mihomo_url/$file" "$file"
 done
 
-# singbox files
-singbox_version="1.13.14"
+# singbox files https://github.com/SagerNet/sing-box
+singbox_version="1.13.15"
 singbox_tag="v$singbox_version"
 singbox_files=(
   "sing-box-$singbox_version-linux-arm64.tar.gz"
@@ -115,7 +115,7 @@ for file in "${singbox_files[@]}"; do
 done
 
 
-# crash files
+# crash files https://github.com/ahaoboy/crash
 crash_files=(
     "crash-aarch64-apple-darwin.tar.gz"
     "crash-aarch64-linux-android.tar.gz"
@@ -152,12 +152,12 @@ done
 # zashboard_url="https://github.com/Zephyruso/zashboard/releases/download/$zashboard_tag/dist.zip"
 # download "$zashboard_url" "zashboard.zip"
 
-# crash
+# crash-ui https://github.com/ahaoboy/crash-ui
 crash_ui_url="https://github.com/ahaoboy/crash-ui/releases/latest/download/crash-ui.zip"
 download "$crash_ui_url" "crash-ui.zip"
 
-# Metacubexd
-metacubexd_tag="v1.265.0"
+# Metacubexd https://github.com/MetaCubeX/metacubexd
+metacubexd_tag="v1.271.0"
 metacubexd_url="https://github.com/MetaCubeX/metacubexd/releases/download/$metacubexd_tag/compressed-dist.tgz"
 download "$metacubexd_url" "metacubexd.tgz"
 
