@@ -84,7 +84,7 @@ compress_single() {
 }
 
 # Mihomo files https://github.com/MetaCubeX/mihomo
-mihomo_tag="v1.19.29"
+mihomo_tag="v1.19.30"
 mihomo_files=(
     "mihomo-windows-amd64-$mihomo_tag.zip"
     "mihomo-linux-amd64-$mihomo_tag.gz"
@@ -100,7 +100,7 @@ for file in "${mihomo_files[@]}"; do
 done
 
 # singbox files https://github.com/SagerNet/sing-box
-singbox_version="1.13.15"
+singbox_version="1.13.19"
 singbox_tag="v$singbox_version"
 singbox_files=(
   "sing-box-$singbox_version-linux-arm64.tar.gz"
@@ -157,7 +157,7 @@ crash_ui_url="https://github.com/ahaoboy/crash-ui/releases/latest/download/crash
 download "$crash_ui_url" "crash-ui.zip"
 
 # Metacubexd https://github.com/MetaCubeX/metacubexd
-metacubexd_tag="v1.271.0"
+metacubexd_tag="v1.273.0"
 metacubexd_url="https://github.com/MetaCubeX/metacubexd/releases/download/$metacubexd_tag/compressed-dist.tgz"
 download "$metacubexd_url" "metacubexd.tgz"
 
